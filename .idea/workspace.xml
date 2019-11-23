@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad2b3d8e-cf5a-4fe2-80eb-5aab8abd4116" name="Default Changelist" comment="" />
+    <list default="true" id="ad2b3d8e-cf5a-4fe2-80eb-5aab8abd4116" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easy-blog.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eb/core/EasyBlogCore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eb/core/WindowCore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eb/service/BaiduService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eb/service/QiniuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/CaptureScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/utils/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/utils/BaiduOCRHttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/utils/BaiduOCRHttpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/utils/CountDownFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/utils/QiniuUploadUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/utils/QiniuUploadUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$BMPfilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$GIFfilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$JPGfilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$PNGfilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$PicPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$PicPanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$PicPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$SaveAllThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$Temp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/AuthService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/BaiduOCRHttpUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/utils/BaiduOCRHttpUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/CountDownFrame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/CountDownFrame$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/CountDownFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/QiniuUploadUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/utils/QiniuUploadUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/easy-blog-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/easy-blog-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-easy-blog-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-easy-blog-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/temp.jpg" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +58,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -29,7 +76,11 @@
     </option>
   </component>
   <component name="ProjectId" id="1TPOmm4KXj25fWVy6NUOFUAdmtl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -63,7 +114,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.EasyBlogCore">
     <configuration name="CaptureScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="eb.core.CaptureScreen" />
       <module name="easy-blog" />
@@ -77,56 +128,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+    <configuration name="Config" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="eb.core.Config" />
       <module name="easy-blog" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eb.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration name="EasyBlogCore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="eb.core.EasyBlogCore" />
       <module name="easy-blog" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eb.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransformMD" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="eb.transform.TransformMD" />
+      <module name="easy-blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eb.transform.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EasyBlogCore" />
+        <item itemvalue="Application.Config" />
         <item itemvalue="Application.CaptureScreen" />
+        <item itemvalue="Application.TransformMD" />
       </list>
     </recent_temporary>
   </component>
@@ -143,26 +189,27 @@
       <workItem from="1573358426121" duration="31726000" />
       <workItem from="1573434941473" duration="9360000" />
       <workItem from="1573445236439" duration="165000" />
+      <workItem from="1573447414238" duration="7881000" />
+      <workItem from="1573466341831" duration="1155000" />
+      <workItem from="1573471524453" duration="1124000" />
+      <workItem from="1574495902585" duration="24308000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/eb/core/CaptureScreen.java</url>
-          <line>234</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/eb/core/CaptureScreen.java</url>
-          <line>528</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

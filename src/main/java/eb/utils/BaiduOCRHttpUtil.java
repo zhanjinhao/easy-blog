@@ -19,9 +19,6 @@ public class BaiduOCRHttpUtil {
     public static String post(String requestUrl, String accessToken, String contentType, String params)
             throws Exception {
         String encoding = "UTF-8";
-        if (requestUrl.contains("nlp")) {
-            encoding = "GBK";
-        }
         return BaiduOCRHttpUtil.post(requestUrl, accessToken, contentType, params, encoding);
     }
  

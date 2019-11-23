@@ -25,7 +25,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>eb.core.CaptureScreen</mainClass>
+                  <mainClass>eb.core.WindowCore</mainClass>
                 </transformer>
               </transformers>
             </configuration>

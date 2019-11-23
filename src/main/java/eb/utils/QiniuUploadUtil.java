@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 public class QiniuUploadUtil {
 
@@ -49,7 +50,7 @@ public class QiniuUploadUtil {
             Auth auth = Auth.create(accessKey, secretKey);
             String upToken = auth.uploadToken(bucket);
             try {
-                Response response = uploadManager.put(stream, fileKey, upToken, null, null);
+                Response response = uploadManager.put(stream, UUID.randomUUID().toString(), upToken, null, null);
 
                 JSONObject parse = (JSONObject) JSONObject.parse(response.bodyString());
                 String key = (String) parse.get("key");

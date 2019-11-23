@@ -1,4 +1,4 @@
-package eb.utils;
+package eb.service;
 
 import com.alibaba.fastjson.JSONObject;
 import eb.core.Config;
@@ -87,7 +87,8 @@ public class AuthService {
     }
 
     public static void main(String[] args) {
-        AuthService.getAuth();
+
+        System.out.println();
     }
 
 }
