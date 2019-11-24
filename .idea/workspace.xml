@@ -2,55 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad2b3d8e-cf5a-4fe2-80eb-5aab8abd4116" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easy-blog.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eb/core/EasyBlogCore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eb/core/WindowCore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eb/service/BaiduService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eb/service/QiniuService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/CaptureScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/utils/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/utils/BaiduOCRHttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/utils/BaiduOCRHttpUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/utils/CountDownFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/utils/QiniuUploadUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/utils/QiniuUploadUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$BMPfilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$GIFfilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$JPGfilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$PNGfilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$PicPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$PicPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$PicPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$SaveAllThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen$Temp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/CaptureScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/AuthService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/BaiduOCRHttpUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/utils/BaiduOCRHttpUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/CountDownFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/CountDownFrame$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/CountDownFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/utils/QiniuUploadUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/utils/QiniuUploadUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/EasyBlogCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/EasyBlogCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/WindowCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/WindowCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/WindowCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/WindowCore.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/easy-blog-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/easy-blog-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-easy-blog-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-easy-blog-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/temp.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="easy-blog" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -114,7 +88,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.EasyBlogCore">
+  <component name="RunManager" selected="Application.WindowCore">
     <configuration name="CaptureScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="eb.core.CaptureScreen" />
       <module name="easy-blog" />
@@ -167,8 +141,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WindowCore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="eb.core.WindowCore" />
+      <module name="easy-blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eb.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WindowCore" />
         <item itemvalue="Application.EasyBlogCore" />
         <item itemvalue="Application.Config" />
         <item itemvalue="Application.CaptureScreen" />
@@ -192,7 +180,8 @@
       <workItem from="1573447414238" duration="7881000" />
       <workItem from="1573466341831" duration="1155000" />
       <workItem from="1573471524453" duration="1124000" />
-      <workItem from="1574495902585" duration="24308000" />
+      <workItem from="1574495902585" duration="24577000" />
+      <workItem from="1574581033453" duration="1017000" />
     </task>
     <servers />
   </component>

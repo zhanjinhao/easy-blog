@@ -758,6 +758,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
 
             SystemTray st = SystemTray.getSystemTray();
             Image im = ImageIO.read(this.getClass().getResource("/cute.jpg"));
+
             PopupMenu pm = new PopupMenu("xxxx");
             pm.add(new MenuItem("about")).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
@@ -766,6 +767,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
                             "github: https://github.com/isjinhao/easy-blog&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br><br>感谢: https://www.jb51.net/article/75114.htm</Font></html>");
                 }
             });
+
             pm.addSeparator();
             pm.add(new MenuItem("window")).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
@@ -788,7 +790,9 @@ public class EasyBlogCore extends JFrame implements ActionListener {
                 }
             });
             TrayIcon ti = new TrayIcon(im, "easy-blog", pm);
+            ti.setImageAutoSize(true);
             st.add(ti);
+
             ti.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
                     EasyBlogCore.this.setVisible(true);
