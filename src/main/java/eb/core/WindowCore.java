@@ -6,6 +6,8 @@ public class WindowCore {
 
     public static void main(String[] args) {
 
+        SingleProcess.checkLock();
+
         try {
             Class.forName("eb.core.Config");
         } catch (ClassNotFoundException e) {
@@ -16,7 +18,7 @@ public class WindowCore {
             EasyBlogCore easyBlogCore = new EasyBlogCore();
 //            easyBlogCore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         });
+        Config.getCurrentAuth();
 
-        Config.checkAndUpdate();
     }
 }

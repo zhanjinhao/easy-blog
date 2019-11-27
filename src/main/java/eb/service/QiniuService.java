@@ -22,19 +22,24 @@ public class QiniuService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String upload = QiniuUploadUtil.upload(file);
-            return upload;
+            try {
+                String upload = QiniuUploadUtil.upload(file);
+                return upload;
+            } catch (Exception e) {
+                return null;
+            }
         };
-        Future<String> submit = executor.submit(task);
+        Future<String> submit = null;
         try {
+            submit = executor.submit(task);
             String s = submit.get(10, TimeUnit.SECONDS);
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(s), null);
-            JOptionPane.showMessageDialog(null, "已上传成功！");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
+            if(s == null){
+                JOptionPane.showMessageDialog(null, "请检查网络设置...");
+            } else {
+                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(s), null);
+                JOptionPane.showMessageDialog(null, "已上传成功！");
+            }
+        } catch (Exception e) {
             submit.cancel(true);
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "请检查网络设置...");

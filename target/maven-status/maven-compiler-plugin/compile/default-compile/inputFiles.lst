@@ -5,6 +5,7 @@ D:\workspace\java\project-workspace\easy-blog\src\main\java\eb\service\QiniuServ
 D:\workspace\java\project-workspace\easy-blog\src\main\java\eb\core\Config.java
 D:\workspace\java\project-workspace\easy-blog\src\main\java\eb\service\AuthService.java
 D:\workspace\java\project-workspace\easy-blog\src\main\java\eb\utils\BaiduOCRHttpUtil.java
+D:\workspace\java\project-workspace\easy-blog\src\main\java\eb\core\SingleProcess.java
 D:\workspace\java\project-workspace\easy-blog\src\main\java\eb\service\BaiduService.java
 D:\workspace\java\project-workspace\easy-blog\src\main\java\eb\utils\ImgFileBase64Util.java
 D:\workspace\java\project-workspace\easy-blog\src\main\java\eb\core\States.java

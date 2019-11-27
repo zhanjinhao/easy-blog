@@ -2,20 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad2b3d8e-cf5a-4fe2-80eb-5aab8abd4116" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/eb/core/SingleProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/EasyBlogCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/EasyBlogCore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/WindowCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/WindowCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/service/QiniuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/service/QiniuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$PicPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$PicPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$SaveAllThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$SaveAllThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$Temp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$Temp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/WindowCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/WindowCore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/service/QiniuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/service/QiniuService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/easy-blog-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/easy-blog-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-easy-blog-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-easy-blog-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/temp.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,12 +141,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransformMD" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="eb.transform.TransformMD" />
+    <configuration name="SingleProcess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="eb.core.SingleProcess" />
       <module name="easy-blog" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="eb.transform.*" />
+          <option name="PATTERN" value="eb.core.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,7 +154,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WindowCore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="WindowCore" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="eb.core.WindowCore" />
       <module name="easy-blog" />
       <extension name="coverage">
@@ -154,13 +167,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.CaptureScreen" />
+      <item itemvalue="Application.Config" />
+      <item itemvalue="Application.EasyBlogCore" />
+      <item itemvalue="Application.SingleProcess" />
+      <item itemvalue="Application.WindowCore" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.WindowCore" />
+        <item itemvalue="Application.SingleProcess" />
         <item itemvalue="Application.EasyBlogCore" />
         <item itemvalue="Application.Config" />
         <item itemvalue="Application.CaptureScreen" />
-        <item itemvalue="Application.TransformMD" />
       </list>
     </recent_temporary>
   </component>
@@ -182,6 +202,7 @@
       <workItem from="1573471524453" duration="1124000" />
       <workItem from="1574495902585" duration="24577000" />
       <workItem from="1574581033453" duration="1017000" />
+      <workItem from="1574846466996" duration="3907000" />
     </task>
     <servers />
   </component>
@@ -200,5 +221,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/eb/service/QiniuService.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

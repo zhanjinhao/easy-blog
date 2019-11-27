@@ -10,6 +10,7 @@ eb\core\WindowCore.class
 eb\service\BaiduService.class
 eb\core\EasyBlogCore$SaveAllThread.class
 eb\core\EasyBlogCore$2.class
+eb\core\SingleProcess.class
 eb\core\Config.class
 eb\core\EasyBlogCore$6.class
 eb\utils\QiniuUploadUtil.class

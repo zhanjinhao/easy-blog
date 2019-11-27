@@ -158,18 +158,19 @@ public class EasyBlogCore extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "图片不能为空!!", "错误", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            System.out.println(":::  " + Config.SAVE_TO_LOCAL_PATH);
             JFileChooser jfc = new JFileChooser(Config.SAVE_TO_LOCAL_PATH);
-            jfc.setDialogType(JFileChooser.OPEN_DIALOG);
+            jfc.setDialogType(JFileChooser.SAVE_DIALOG);
 
             int i = jfc.showSaveDialog(this);
             if (i == JFileChooser.APPROVE_OPTION) {
                 File file = jfc.getSelectedFile();
                 String ext = "jpg";
-                file = new File(file.toString().toLowerCase() + File.separator + ext);
+                file = new File(file.toString().toLowerCase() + "." + ext);
 
                 String absolutePath = file.getAbsolutePath();
                 Config.SAVE_TO_LOCAL_PATH = absolutePath.substring(0, absolutePath.lastIndexOf('\\'));
-
+                System.out.println( Config.SAVE_TO_LOCAL_PATH);
                 // BufferedImage 后缀名 文件
                 if (ImageIO.write(currentImg, ext, file)) {
                     JOptionPane.showMessageDialog(this, "保存成功！");
@@ -204,15 +205,22 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             JFileChooser jfc2 = new JFileChooser(Config.LOCAL_DIR_PATH);
             int i = jfc2.showSaveDialog(this);
             File file = null;
+            jfc2.setDialogType(JFileChooser.OPEN_DIALOG);
 
             if (i == JFileChooser.APPROVE_OPTION) {
                 file = jfc2.getSelectedFile();
 
 
+                String absolutePath = file.getAbsolutePath();
+                Config.LOCAL_DIR_PATH = absolutePath.substring(0, absolutePath.lastIndexOf('\\'));
+
                 if (!isImage(file)) {
                     JOptionPane.showMessageDialog(null, "请选择图片文件！");
                     return;
                 }
+
+
+
 
                 BufferedImage sourceImg = ImageIO.read(new FileInputStream(file));
                 this.setVisible(false);
@@ -238,7 +246,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             return;
         }
         JFileChooser jfc = new JFileChooser(Config.SAVE_TO_LOCAL_PATH);
-        jfc.setDialogType(JFileChooser.OPEN_DIALOG);
+        jfc.setDialogType(JFileChooser.SAVE_DIALOG);
         int i = jfc.showSaveDialog(this);
         if (i == JFileChooser.APPROVE_OPTION) {
             File file = jfc.getSelectedFile();
@@ -292,7 +300,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
                 for (int i = 0; i < allTask; i++) {
                     PicPanel pp = (PicPanel) jtp.getComponentAt(i);
                     BufferedImage image = pp.getImage();
-                    File f = new File(name + "-" + (doneTask + 1) + File.separator + ext.toLowerCase());
+                    File f = new File(name + "-" + (doneTask + 1) + "." + ext.toLowerCase());
 
                     String absolutePath = f.getAbsolutePath();
 
@@ -786,6 +794,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             });
             pm.add(new MenuItem("exit")).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
+                    Config.updateProperties();
                     System.exit(0);
                 }
             });

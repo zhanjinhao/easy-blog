@@ -45,6 +45,7 @@ public class Config {
 
             BAIDU_LAST_UPDATE_TIME = propertiesIn.getProperty("baidu-last-update-time");
             BAIDU_ACCESS_TOKEN = propertiesIn.getProperty("baidu-access-token");
+            currentAuth = BAIDU_ACCESS_TOKEN;
 
             QINIUYUN_API_KEY = propertiesIn.getProperty("qiniuyun-api-key");
             QINIUYUN_SECRET_KEY = propertiesIn.getProperty("qiniuyun-secret-key");
@@ -62,9 +63,9 @@ public class Config {
                 propertiesOut.setProperty("baiduocr-api-secret", BAIDUOCR_API_SECRET);
                 propertiesOut.setProperty("baiduocr-api-url", BAIDUOCR_API_URL);
 
+                BAIDU_ACCESS_TOKEN = auth;
                 propertiesOut.setProperty("baidu-access-token", auth);
                 propertiesOut.setProperty("baidu-last-update-time", String.valueOf(System.currentTimeMillis()));
-
 
                 propertiesOut.setProperty("qiniuyun-api-key", QINIUYUN_API_KEY);
                 propertiesOut.setProperty("qiniuyun-secret-key", QINIUYUN_SECRET_KEY);
@@ -80,7 +81,6 @@ public class Config {
         } catch (Exception e) {
             e.printStackTrace();
 
-
             JOptionPane.showMessageDialog(null, "配置文件有错！请检查。");
             try {
                 Thread.sleep(5000);
@@ -93,44 +93,44 @@ public class Config {
         }
     }
 
-    public static void checkAndUpdate() {
+    private static String currentAuth;
+
+    public static void getCurrentAuth() {
+        long lastTime = Long.valueOf(BAIDU_LAST_UPDATE_TIME);
+
+        long now = System.currentTimeMillis();
+        if (now - lastTime > 20 * 24 * 60 * 60 * 1000) {
+            String auth = AuthService.getAuth();
+            currentAuth = auth;
+        }
+    }
+
+    public static void updateProperties() {
         try {
             BAIDU_LAST_UPDATE_TIME = propertiesIn.getProperty("baidu-last-update-time");
-            long lastTime = Long.valueOf(BAIDU_LAST_UPDATE_TIME);
 
-            long now = System.currentTimeMillis();
+            FileOutputStream fileOutputStream = new FileOutputStream(propertiesPath);
+            Properties propertiesOut = new Properties();
 
-            if (now - lastTime > 20 * 24 * 60 * 60 * 1000) {
-                FileOutputStream fileOutputStream = new FileOutputStream(propertiesPath);
-                Properties propertiesOut = new Properties();
-                String auth = AuthService.getAuth();
-                propertiesOut.setProperty("baiduocr-api-key", BAIDUOCR_API_KEY);
-                propertiesOut.setProperty("baiduocr-api-secret", BAIDUOCR_API_SECRET);
-                propertiesOut.setProperty("baiduocr-api-url", BAIDUOCR_API_URL);
+            propertiesOut.setProperty("baiduocr-api-key", BAIDUOCR_API_KEY);
+            propertiesOut.setProperty("baiduocr-api-secret", BAIDUOCR_API_SECRET);
+            propertiesOut.setProperty("baiduocr-api-url", BAIDUOCR_API_URL);
 
-                propertiesOut.setProperty("baidu-access-token", auth);
-                propertiesOut.setProperty("baidu-last-update-time", String.valueOf(System.currentTimeMillis()));
+            propertiesOut.setProperty("baidu-access-token", currentAuth);
+            propertiesOut.setProperty("baidu-last-update-time", String.valueOf(System.currentTimeMillis()));
 
-                propertiesOut.setProperty("qiniuyun-api-key", QINIUYUN_API_KEY);
-                propertiesOut.setProperty("qiniuyun-secret-key", QINIUYUN_SECRET_KEY);
-                propertiesOut.setProperty("qiniuyun-bucket", QINIUYUN_BUCKET);
-                propertiesOut.setProperty("local-dir-path", LOCAL_DIR_PATH);
-                propertiesOut.setProperty("save-to-local-path", SAVE_TO_LOCAL_PATH);
+            propertiesOut.setProperty("qiniuyun-api-key", QINIUYUN_API_KEY);
+            propertiesOut.setProperty("qiniuyun-secret-key", QINIUYUN_SECRET_KEY);
+            propertiesOut.setProperty("qiniuyun-bucket", QINIUYUN_BUCKET);
+            propertiesOut.setProperty("local-dir-path", LOCAL_DIR_PATH);
+            propertiesOut.setProperty("save-to-local-path", SAVE_TO_LOCAL_PATH);
 
-                propertiesOut.store(fileOutputStream, new Date().toString());
-                fileOutputStream.flush();
-                fileOutputStream.close();
-            }
+            propertiesOut.store(fileOutputStream, new Date().toString());
+            fileOutputStream.flush();
+            fileOutputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
-
             JOptionPane.showMessageDialog(null, "配置文件有错！请检查。");
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-
             System.exit(-1);
         }
     }
