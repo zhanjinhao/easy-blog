@@ -7,7 +7,6 @@ import java.nio.channels.FileLock;
 
 public class SingleProcess {
 
-
     // 检查是否获得锁,true:获得锁，说明是第一次执行;false:没有取得锁，说明已经有一个程序在执行
     public static boolean checkLock() {
         FileLock lock = null;

@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad2b3d8e-cf5a-4fe2-80eb-5aab8abd4116" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/eb/core/SingleProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/EasyBlogCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/EasyBlogCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/WindowCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/WindowCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eb/service/QiniuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/service/QiniuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eb/core/SingleProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eb/core/SingleProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$3.class" afterDir="false" />
@@ -21,14 +17,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$SaveAllThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$SaveAllThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$Temp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore$Temp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/EasyBlogCore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/WindowCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/WindowCore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eb/service/QiniuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/service/QiniuService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/easy-blog-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/easy-blog-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-easy-blog-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-easy-blog-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/temp.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eb/core/SingleProcess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eb/core/SingleProcess.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +191,8 @@
       <workItem from="1573471524453" duration="1124000" />
       <workItem from="1574495902585" duration="24577000" />
       <workItem from="1574581033453" duration="1017000" />
-      <workItem from="1574846466996" duration="3907000" />
+      <workItem from="1574846466996" duration="4344000" />
+      <workItem from="1575010389285" duration="904000" />
     </task>
     <servers />
   </component>

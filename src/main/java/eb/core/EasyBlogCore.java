@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Collections;
 
 public class EasyBlogCore extends JFrame implements ActionListener {
 
@@ -32,8 +33,10 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/cute.jpg"));
         this.setIconImage(imageIcon.getImage());
         initWindow();
-        initDir();
-        initTrayIcon();
+        new Thread(()->{
+            initDir();
+            initTrayIcon();
+        }).start();
     }
 
     // 公共区的按钮：屏幕截图、本地文件、保存所有、移除所有
@@ -411,12 +414,6 @@ public class EasyBlogCore extends JFrame implements ActionListener {
 
 
     private void doRemoveAll() {
-        int tabCount = jtp.getTabCount();
-        for (int i = tabCount - 1; i >= 0; i--) {
-            jtp.remove(i);
-            index--;
-        }
-
         /**
          * 设置起始界面
          */
@@ -490,6 +487,8 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         this.setVisible(true);
         this.setSize(1000, 750);
         this.setLocationRelativeTo(null);
+
+        outsidePanel.setBackground(Color.GRAY);
         if (tempBufferedImage != null) {
             // 如果索引是0，表示一张图片都没有被加入过，要清除当前的东西，重新把tabpane放进来
             if (index == 0) {
