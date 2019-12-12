@@ -1,26 +1,33 @@
 package eb.core;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import eb.service.BaiduService;
 import eb.service.QiniuService;
+import eb.utils.FileUtil;
+import eb.utils.http.TransApi;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Collections;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.Optional;
+import java.util.concurrent.*;
 
 public class EasyBlogCore extends JFrame implements ActionListener {
 
     // 屏幕截图的暂存路径
-    public String captureImgPath;
+    public static String captureImgPath;
 
     public EasyBlogCore() {
         super("easy-blog");
@@ -40,7 +47,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
     }
 
     // 公共区的按钮：屏幕截图、本地文件、保存所有、移除所有
-    private JButton captureCut, localFile, saveAll, removeAll;
+    private JButton captureCut, localImg, saveAll, removeAll, netImg;
 
     // 一个面板
     private JPanel outsidePanel;
@@ -66,6 +73,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             System.exit(-1);
         }
         captureImgPath = canonicalPath + File.separator + "temp.jpg";
+
         System.out.println("canonicalPath : " + canonicalPath);
 
         // 浏览图片的路径
@@ -88,15 +96,19 @@ public class EasyBlogCore extends JFrame implements ActionListener {
          */
         // 创建公共操作区的按钮
         captureCut = new JButton("<html><span color=red>开始截取</span><html>");
-        localFile = new JButton("<html><span color=red>本地文件</span><html>");
+        localImg = new JButton("<html><span color=red>本地文件</span><html>");
         saveAll = new JButton("<html><span color=red>保存所有</span><html>");
         removeAll = new JButton("<html><span color=red>全部移除</span><html>");
+        netImg = new JButton("<html><span color=red>网络图片</span><html>");
         captureCut.addActionListener(this);
         saveAll.addActionListener(this);
         removeAll.addActionListener(this);
-        localFile.addActionListener(this);
+        localImg.addActionListener(this);
+        netImg.addActionListener(this);
+
         publicOperateButtons.add(captureCut);
-        publicOperateButtons.add(localFile);
+        publicOperateButtons.add(localImg);
+        publicOperateButtons.add(netImg);
         publicOperateButtons.add(saveAll);
         publicOperateButtons.add(removeAll);
         TitledBorder publicOperate = BorderFactory.createTitledBorder("公共操作区");
@@ -117,7 +129,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         this.getContentPane().add(outsidePanel, BorderLayout.CENTER);   // 放在界面的下面
 
         // 设置JFrame的大小
-        this.setSize(500, 300);
+        this.setSize(600, 350);
 
         // 初始化放置图片的区域
         jtp = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -222,9 +234,6 @@ public class EasyBlogCore extends JFrame implements ActionListener {
                     return;
                 }
 
-
-
-
                 BufferedImage sourceImg = ImageIO.read(new FileInputStream(file));
                 this.setVisible(false);
                 Thread.sleep(500);  // 睡500毫秒是为了让主窗完全不见
@@ -236,6 +245,142 @@ public class EasyBlogCore extends JFrame implements ActionListener {
                 jf.setVisible(true);
                 jf.setAlwaysOnTop(true);
             }
+
+        } catch (Exception exe) {
+            exe.printStackTrace();
+            this.setVisible(true);
+        }
+    }
+
+    public class NetImgInput extends JDialog {
+        ExecutorService executor = Executors.newCachedThreadPool();
+        private static final long serialVersionUID = 1L;
+        private final JPanel contentPanel = new JPanel();
+        //父窗口
+        JFrame parentFrame = null;
+
+        private JTextField urlStringField;
+
+        private Charset charset = Charset.forName("utf-8");
+
+        /**
+         * Create the dialog.
+         */
+        public NetImgInput(JFrame parentFrame) {
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    //一旦出现注册界面，父界面（客户端就要隐藏）
+                    NetImgInput.this.setVisible(true);
+                    parentFrame.setVisible(false);
+                }
+            });
+            this.parentFrame = parentFrame;
+
+            setResizable(false);
+            setBounds(100, 100, 600, 100);
+            getContentPane().setLayout(new BorderLayout());
+            contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+            getContentPane().add(contentPanel, BorderLayout.CENTER);
+            contentPanel.setLayout(null);
+
+            JLabel lblNewLabel = new JLabel("<html><span color=red; font-size=14px>地址：</span><html>");
+            lblNewLabel.setBounds(30, 10, 40, 15);
+            contentPanel.add(lblNewLabel);
+
+            urlStringField = new JTextField();
+            urlStringField.setBounds(109, 7, 450, 21);
+            contentPanel.add(urlStringField);
+            urlStringField.setColumns(10);
+            this.setLocationRelativeTo(null);
+            {
+                JPanel buttonPane = new JPanel();
+                buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+                getContentPane().add(buttonPane, BorderLayout.SOUTH);
+                {
+                    urlStringField.setText("");
+                    JButton okButton = new JButton("下载");
+                    okButton.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            String urlString = urlStringField.getText().trim();
+                            try {
+                                Callable<File> task = () -> {
+                                    File file = null;
+                                    try {
+                                        Optional<File> file1 = FileUtil.downFile(urlString, EasyBlogCore.captureImgPath);
+                                        file = file1.get();
+                                    } catch (Exception e1) {
+                                        e1.printStackTrace();
+                                        return null;
+                                    }
+                                    return file;
+                                };
+                                Future<File> submit = null;
+                                try {
+                                    submit = executor.submit(task);
+                                    File file = submit.get(10, TimeUnit.SECONDS);
+                                    if(file == null){
+                                        JOptionPane.showMessageDialog(null, "请检查网络设置...");
+                                    } else {
+                                        if (!isImage(file)) {
+                                            JOptionPane.showMessageDialog(null, "请选择图片文件！");
+                                            return;
+                                        }
+                                        NetImgInput.this.setVisible(false);
+                                        BufferedImage sourceImg = ImageIO.read(new FileInputStream(file));
+                                        EasyBlogCore.this.setVisible(false);
+                                        Thread.sleep(500);  // 睡500毫秒是为了让主窗完全不见
+                                        JFrame jf = new JFrame();
+                                        Temp temp = new Temp(jf, sourceImg, sourceImg.getWidth(), sourceImg.getHeight());
+                                        jf.getContentPane().add(temp, BorderLayout.CENTER);
+                                        jf.setUndecorated(true);
+                                        jf.setSize(new Dimension(sourceImg.getWidth(), sourceImg.getHeight()));
+                                        jf.setVisible(true);
+                                        jf.setAlwaysOnTop(true);
+                                    }
+                                } catch (Exception e2) {
+                                    submit.cancel(true);
+                                    e2.printStackTrace();
+                                    JOptionPane.showMessageDialog(null, "请检查网络设置...");
+                                }
+
+                                urlStringField.setText("");
+
+                            } catch (Exception e3) {
+                                e3.printStackTrace();
+                                JOptionPane.showMessageDialog(null, "网络地址出错", "错误", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    });
+                    //比较触发事件的按钮是不是这个按钮
+                    okButton.setActionCommand("OK");
+                    buttonPane.add(okButton);
+                    getRootPane().setDefaultButton(okButton);
+                }
+                {
+                    JButton cancelButton = new JButton("取消");
+                    cancelButton.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            NetImgInput.this.setVisible(false);
+                            parentFrame.setVisible(true);
+                        }
+                    });
+                    cancelButton.setActionCommand("Cancel");
+                    buttonPane.add(cancelButton);
+                }
+            }
+        }
+    }
+
+
+    private NetImgInput regiestDialog = new NetImgInput(this);
+
+    private void doNetImg() {
+        try {
+
+            regiestDialog.setVisible(true);
+            EasyBlogCore.this.setVisible(false);
+            System.out.println("0-------------------");
 
         } catch (Exception exe) {
             exe.printStackTrace();
@@ -328,7 +473,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
     // 一个内部类，它表示一个面板，一个可以被放进tabpane的面板
     // 也有自己的一套处理保存和复制的方法
     private class PicPanel extends JPanel implements ActionListener {
-        JButton save, copy, remove, ocr, qiniu;   //表示保存，复制，关闭，识别文字，上传至七牛云的按钮
+        JButton save, copy, remove, ocr, qiniu, translate;   //表示保存，复制，关闭，识别文字，上传至七牛云的按钮
         BufferedImage get;  // 面板里的图片
 
         public PicPanel(BufferedImage get) {
@@ -347,12 +492,14 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             ocr = new JButton("识别文字");
             qiniu = new JButton("上传至七牛云");
             remove = new JButton("移除");
+            translate = new JButton("翻译");
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.add(copy);
             buttonPanel.add(save);
             buttonPanel.add(ocr);
             buttonPanel.add(qiniu);
+            buttonPanel.add(translate);
             buttonPanel.add(remove);
 
             JLabel icon = new JLabel(new ImageIcon(get));
@@ -363,6 +510,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             remove.addActionListener(this);
             ocr.addActionListener(this);
             qiniu.addActionListener(this);
+            translate.addActionListener(this);
         }
 
         public void actionPerformed(ActionEvent e) {
@@ -375,9 +523,17 @@ public class EasyBlogCore extends JFrame implements ActionListener {
                 get = null;
                 doRemove(this);
             } else if (source == ocr) {
-                BaiduService.doOcr(get, captureImgPath);
+                String s = BaiduService.doOcr(get, captureImgPath);
+                if(s == null){
+                    JOptionPane.showMessageDialog(null, "请检查网络设置...");
+                } else {
+                    JOptionPane.showMessageDialog(null, "文字识别成功！");
+                }
+
             } else if (source == qiniu) {
                 QiniuService.doQiniuUpload(get, captureImgPath);
+            } else if(source == translate){
+                doTranslate(get);
             }
         }
     }
@@ -396,6 +552,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             outsidePanel.removeAll();
             jtp = null;
             System.gc();
+            outsidePanel.setBackground(Color.BLACK);  // 背景设置为黑色
             JLabel start = new JLabel("EASY-BLOG", JLabel.CENTER);
             start.setFont(new Font("黑体", Font.BOLD, 40));
             start.setForeground(Color.RED);
@@ -403,11 +560,12 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             this.getContentPane().add(outsidePanel, BorderLayout.CENTER);   // 放在界面的下面
 
             // 设置JFrame的大小
-            this.setSize(500, 300);
+            this.setSize(600, 350);
 
             // 初始化放置图片的区域
             jtp = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
-            SwingUtilities.updateComponentTreeUI(outsidePanel);
+
+            // 设置JFrame的大小为屏幕居中
             this.setLocationRelativeTo(null);
         }
     }
@@ -420,6 +578,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         outsidePanel.removeAll();
         jtp = null;
         System.gc();
+        outsidePanel.setBackground(Color.BLACK);  // 背景设置为黑色
         JLabel start = new JLabel("EASY-BLOG", JLabel.CENTER);
         start.setFont(new Font("黑体", Font.BOLD, 40));
         start.setForeground(Color.RED);
@@ -427,11 +586,12 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         this.getContentPane().add(outsidePanel, BorderLayout.CENTER);   // 放在界面的下面
 
         // 设置JFrame的大小
-        this.setSize(500, 300);
+        this.setSize(600, 350);
 
         // 初始化放置图片的区域
         jtp = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
-        SwingUtilities.updateComponentTreeUI(outsidePanel);
+        index = 0;
+        // 设置JFrame的大小为屏幕居中
         this.setLocationRelativeTo(null);
     }
 
@@ -445,8 +605,10 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             doRemoveAll();
         } else if (source == saveAll) {
             doSaveAll();
-        } else if (source == localFile) {
+        } else if (source == localImg) {
             doLocalFile();
+        } else if (source == netImg) {
+            doNetImg();
         }
     }
 
@@ -481,6 +643,27 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             exe.printStackTrace();
             JOptionPane.showMessageDialog(this, "复制到系统粘帖板出错!!", "错误", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public void doTranslate(final BufferedImage image){
+        String s = BaiduService.doOcr(image, captureImgPath);
+        TransApi api = new TransApi(Config.BAIDU_TRANSLATE_API_ID, Config.BAIDU_TRANSLATE_API_SECRET);
+
+        String transResult = api.getTransResult(s, "auto", "zh");
+
+        JSONObject parse = (JSONObject) JSONObject.parse(transResult);
+
+        JSONArray words_result = (JSONArray) parse.get("trans_result");
+        String format = "";
+        Iterator<Object> iterator = words_result.iterator();
+        while (iterator.hasNext()) {
+            JSONObject jsonObject = (JSONObject) iterator.next();
+            format += jsonObject.get("dst") + " ";
+        }
+
+        System.out.println(format);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(format), null);
+        JOptionPane.showMessageDialog(null, "文字识别成功！");
     }
 
     private void updates() {

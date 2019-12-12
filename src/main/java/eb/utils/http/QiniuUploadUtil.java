@@ -1,4 +1,4 @@
-package eb.utils;
+package eb.utils.http;
 
 import com.alibaba.fastjson.JSONObject;
 import com.qiniu.common.QiniuException;

@@ -1,11 +1,12 @@
 package eb.utils;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import eb.core.EasyBlogCore;
+
+import javax.swing.text.html.Option;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Optional;
 
 public class FileUtil {
 	
@@ -25,6 +26,28 @@ public class FileUtil {
 		file.createNewFile();
 		return file;
 	}
+
+	public static Optional<File> downFile(String strString, String imgPath) {
+		File file = new File(imgPath);
+		try {
+			URL url = new URL(strString);
+			URLConnection con = url.openConnection();
+			InputStream is = con.getInputStream();
+			byte[] bs = new byte[1024];
+			int len;
+			OutputStream os = new FileOutputStream(file);
+			while ((len = is.read(bs)) != -1) {
+				os.write(bs, 0, len);
+			}
+			os.close();
+			is.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Optional.empty();
+		}
+		return Optional.of(file);
+	}
+
 	
 	public static String getGradeAndMajorFromUid(String uid) {
 		return uid.substring(0, 6);

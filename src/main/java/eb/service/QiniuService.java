@@ -1,6 +1,6 @@
 package eb.service;
 
-import eb.utils.QiniuUploadUtil;
+import eb.utils.http.QiniuUploadUtil;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

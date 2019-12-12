@@ -1,4 +1,4 @@
-package eb.utils;
+package eb.utils.http;
  
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

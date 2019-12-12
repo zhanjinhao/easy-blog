@@ -3,7 +3,7 @@ package eb.service;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import eb.core.Config;
-import eb.utils.BaiduOCRHttpUtil;
+import eb.utils.http.BaiduOCRHttpUtil;
 import eb.utils.ImgFileBase64Util;
 
 import javax.imageio.ImageIO;
@@ -20,7 +20,7 @@ import java.util.concurrent.*;
 public class BaiduService {
     static ExecutorService executor = Executors.newCachedThreadPool();
 
-    public static void doOcr(BufferedImage image, String tempFilePath){
+    public static String doOcr(BufferedImage image, String tempFilePath){
 
         Callable<String> task = () -> {
             File file = new File(tempFilePath);
@@ -56,7 +56,7 @@ public class BaiduService {
         try {
             String s = submit.get(10, TimeUnit.SECONDS);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(s), null);
-            JOptionPane.showMessageDialog(null, "文字识别成功！");
+            return s;
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -64,7 +64,7 @@ public class BaiduService {
         } catch (TimeoutException e) {
             submit.cancel(true);
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "请检查网络设置...");
         }
+        return null;
     }
 }

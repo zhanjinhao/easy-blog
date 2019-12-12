@@ -23,6 +23,10 @@ public class Config {
 
     public static String BAIDU_LAST_UPDATE_TIME;
 
+    public static String BAIDU_TRANSLATE_API_ID;
+    public static String BAIDU_TRANSLATE_API_SECRET;
+
+
     // 浏览本地文件时的默认路径
     public static String LOCAL_DIR_PATH;
 
@@ -52,6 +56,8 @@ public class Config {
             QINIUYUN_BUCKET = propertiesIn.getProperty("qiniuyun-bucket");
             LOCAL_DIR_PATH = propertiesIn.getProperty("local-dir-path");
             SAVE_TO_LOCAL_PATH = propertiesIn.getProperty("save-to-local-path");
+            BAIDU_TRANSLATE_API_ID = propertiesIn.getProperty("baidu-translate-api-id");
+            BAIDU_TRANSLATE_API_SECRET = propertiesIn.getProperty("baidu-translate-api-secret");
 
             System.out.println(BAIDU_LAST_UPDATE_TIME);
             if ("init".equals(BAIDU_LAST_UPDATE_TIME)) {
@@ -72,6 +78,8 @@ public class Config {
                 propertiesOut.setProperty("qiniuyun-bucket", QINIUYUN_BUCKET);
                 propertiesOut.setProperty("local-dir-path", LOCAL_DIR_PATH);
                 propertiesOut.setProperty("save-to-local-path", SAVE_TO_LOCAL_PATH);
+                propertiesOut.setProperty("baidu-translate-api-secret", BAIDU_TRANSLATE_API_SECRET);
+                propertiesOut.setProperty("baidu-translate-api-id", BAIDU_TRANSLATE_API_ID);
 
                 propertiesOut.store(fileOutputStream, new Date().toString());
                 fileOutputStream.flush();
@@ -124,6 +132,8 @@ public class Config {
             propertiesOut.setProperty("qiniuyun-bucket", QINIUYUN_BUCKET);
             propertiesOut.setProperty("local-dir-path", LOCAL_DIR_PATH);
             propertiesOut.setProperty("save-to-local-path", SAVE_TO_LOCAL_PATH);
+            propertiesOut.setProperty("baidu-translate-api-secret", BAIDU_TRANSLATE_API_SECRET);
+            propertiesOut.setProperty("baidu-translate-api-id", BAIDU_TRANSLATE_API_ID);
 
             propertiesOut.store(fileOutputStream, new Date().toString());
             fileOutputStream.flush();
