@@ -55,7 +55,7 @@ public class QiniuUploadUtil {
                 JSONObject parse = (JSONObject) JSONObject.parse(response.bodyString());
                 String key = (String) parse.get("key");
 
-                return "http://q0l9qvfyx.bkt.clouddn.com/" + key;
+                return Config.QINIUYUN_URL_PREFIX + key;
 
             } catch (QiniuException ex) {
                 Response r = ex.response;

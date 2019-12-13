@@ -15,8 +15,7 @@ public class WindowCore {
         }
 
         SwingUtilities.invokeLater(() -> {
-            EasyBlogCore easyBlogCore = new EasyBlogCore();
-//            easyBlogCore.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            new EasyBlogCore();
         });
         Config.getCurrentAuth();
 

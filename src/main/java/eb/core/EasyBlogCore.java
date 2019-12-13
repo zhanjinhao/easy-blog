@@ -2,6 +2,7 @@ package eb.core;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.melloware.jintellitype.JIntellitype;
 import eb.service.BaiduService;
 import eb.service.QiniuService;
 import eb.utils.FileUtil;
@@ -11,6 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
@@ -18,13 +20,18 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
-import java.nio.charset.Charset;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Optional;
 import java.util.concurrent.*;
 
 public class EasyBlogCore extends JFrame implements ActionListener {
+
+    private static final int HOT_KEY_CAPTURE_CUT = 1;
+    private static final int HOT_KEY_LOCAL_IMG = 2;
+    private static final int HOT_KEY_DOWN_IMG = 3;
 
     // 屏幕截图的暂存路径
     public static String captureImgPath;
@@ -32,8 +39,12 @@ public class EasyBlogCore extends JFrame implements ActionListener {
     public EasyBlogCore() {
         super("easy-blog");
         try {
-            // 设置为系统界面风格
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.put("FileChooser.viewMenuLabelText","视图");
+            UIManager.put("FileChooser.newFolderActionLabelText","新建文件夹");
+            UIManager.put("FileChooser.refreshActionLabelText","刷新");
+            UIManager.put("FileChooser.listViewActionLabelText","列表");
+            UIManager.put("FileChooser.detailsViewActionLabelText","详细信息");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -43,6 +54,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         new Thread(()->{
             initDir();
             initTrayIcon();
+            initHotKey();
         }).start();
     }
 
@@ -87,6 +99,25 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         if (!file3.exists() || !file3.isDirectory()) {
             Config.SAVE_TO_LOCAL_PATH = "D:\\";
         }
+    }
+
+    private void initHotKey() {
+        JIntellitype.getInstance().registerHotKey(HOT_KEY_CAPTURE_CUT, JIntellitype.MOD_ALT, (int) 'Z');
+        JIntellitype.getInstance().registerHotKey(HOT_KEY_LOCAL_IMG, JIntellitype.MOD_ALT, (int) 'X');
+        JIntellitype.getInstance().registerHotKey(HOT_KEY_DOWN_IMG, JIntellitype.MOD_ALT, (int) 'C');
+        JIntellitype.getInstance().addHotKeyListener(markCode -> {
+            switch (markCode) {
+                case HOT_KEY_CAPTURE_CUT:
+                    captureCut();
+                    break;
+                case HOT_KEY_LOCAL_IMG:
+                    doLocalFile();
+                    break;
+                case HOT_KEY_DOWN_IMG:
+                    doNetImg();
+                    break;
+            }
+        });
     }
 
     private void initWindow() {
@@ -177,6 +208,14 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             JFileChooser jfc = new JFileChooser(Config.SAVE_TO_LOCAL_PATH);
             jfc.setDialogType(JFileChooser.SAVE_DIALOG);
 
+            Action details = jfc.getActionMap().get("viewTypeDetails");
+            details.actionPerformed(null);
+            jfc.setSize(550, 450);
+
+            jfc.setMultiSelectionEnabled(false);
+            jfc.setFileFilter(new FileNameExtensionFilter("image(*.jpg, *.png, *.gif)", "jpg", "png", "gif"));
+            jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
             int i = jfc.showSaveDialog(this);
             if (i == JFileChooser.APPROVE_OPTION) {
                 File file = jfc.getSelectedFile();
@@ -218,13 +257,18 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         try {
 
             JFileChooser jfc2 = new JFileChooser(Config.LOCAL_DIR_PATH);
-            int i = jfc2.showSaveDialog(this);
-            File file = null;
             jfc2.setDialogType(JFileChooser.OPEN_DIALOG);
+            Action details = jfc2.getActionMap().get("viewTypeDetails");
+            details.actionPerformed(null);
+            jfc2.setSize(550, 450);
 
+            jfc2.setMultiSelectionEnabled(false);
+            jfc2.setFileFilter(new FileNameExtensionFilter("image(*.jpg, *.png, *.gif)", "jpg", "png", "gif"));
+            jfc2.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int i = jfc2.showOpenDialog(this);
+            File file = null;
             if (i == JFileChooser.APPROVE_OPTION) {
                 file = jfc2.getSelectedFile();
-
 
                 String absolutePath = file.getAbsolutePath();
                 Config.LOCAL_DIR_PATH = absolutePath.substring(0, absolutePath.lastIndexOf('\\'));
@@ -260,8 +304,6 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         JFrame parentFrame = null;
 
         private JTextField urlStringField;
-
-        private Charset charset = Charset.forName("utf-8");
 
         /**
          * Create the dialog.
@@ -305,7 +347,7 @@ public class EasyBlogCore extends JFrame implements ActionListener {
                             String urlString = urlStringField.getText().trim();
                             try {
                                 Callable<File> task = () -> {
-                                    File file = null;
+                                    File file;
                                     try {
                                         Optional<File> file1 = FileUtil.downFile(urlString, EasyBlogCore.captureImgPath);
                                         file = file1.get();
@@ -377,11 +419,8 @@ public class EasyBlogCore extends JFrame implements ActionListener {
 
     private void doNetImg() {
         try {
-
             regiestDialog.setVisible(true);
             EasyBlogCore.this.setVisible(false);
-            System.out.println("0-------------------");
-
         } catch (Exception exe) {
             exe.printStackTrace();
             this.setVisible(true);
@@ -395,6 +434,14 @@ public class EasyBlogCore extends JFrame implements ActionListener {
         }
         JFileChooser jfc = new JFileChooser(Config.SAVE_TO_LOCAL_PATH);
         jfc.setDialogType(JFileChooser.SAVE_DIALOG);
+        Action details = jfc.getActionMap().get("viewTypeDetails");
+        details.actionPerformed(null);
+        jfc.setSize(550, 450);
+
+        jfc.setMultiSelectionEnabled(false);
+        jfc.setFileFilter(new FileNameExtensionFilter("image(*.jpg, *.png, *.gif)", "jpg", "png", "gif"));
+        jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
         int i = jfc.showSaveDialog(this);
         if (i == JFileChooser.APPROVE_OPTION) {
             File file = jfc.getSelectedFile();
@@ -971,7 +1018,12 @@ public class EasyBlogCore extends JFrame implements ActionListener {
             });
             pm.add(new MenuItem("local-file")).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
-                   doLocalFile();
+                    doLocalFile();
+                }
+            });
+            pm.add(new MenuItem("down_img")).addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent ae) {
+                    doNetImg();
                 }
             });
             pm.add(new MenuItem("exit")).addActionListener(new ActionListener() {

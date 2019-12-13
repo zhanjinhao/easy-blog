@@ -21,6 +21,8 @@ public class Config {
     public static String QINIUYUN_SECRET_KEY;
     public static String QINIUYUN_BUCKET;
 
+    public static String QINIUYUN_URL_PREFIX;
+
     public static String BAIDU_LAST_UPDATE_TIME;
 
     public static String BAIDU_TRANSLATE_API_ID;
@@ -53,7 +55,9 @@ public class Config {
 
             QINIUYUN_API_KEY = propertiesIn.getProperty("qiniuyun-api-key");
             QINIUYUN_SECRET_KEY = propertiesIn.getProperty("qiniuyun-secret-key");
+            QINIUYUN_URL_PREFIX = propertiesIn.getProperty("qiniuyun-url-prefix");
             QINIUYUN_BUCKET = propertiesIn.getProperty("qiniuyun-bucket");
+
             LOCAL_DIR_PATH = propertiesIn.getProperty("local-dir-path");
             SAVE_TO_LOCAL_PATH = propertiesIn.getProperty("save-to-local-path");
             BAIDU_TRANSLATE_API_ID = propertiesIn.getProperty("baidu-translate-api-id");
@@ -76,6 +80,7 @@ public class Config {
                 propertiesOut.setProperty("qiniuyun-api-key", QINIUYUN_API_KEY);
                 propertiesOut.setProperty("qiniuyun-secret-key", QINIUYUN_SECRET_KEY);
                 propertiesOut.setProperty("qiniuyun-bucket", QINIUYUN_BUCKET);
+                propertiesOut.setProperty("qiniuyun-url-prefix", QINIUYUN_URL_PREFIX);
                 propertiesOut.setProperty("local-dir-path", LOCAL_DIR_PATH);
                 propertiesOut.setProperty("save-to-local-path", SAVE_TO_LOCAL_PATH);
                 propertiesOut.setProperty("baidu-translate-api-secret", BAIDU_TRANSLATE_API_SECRET);
@@ -104,13 +109,18 @@ public class Config {
     private static String currentAuth;
 
     public static void getCurrentAuth() {
-        long lastTime = Long.valueOf(BAIDU_LAST_UPDATE_TIME);
 
-        long now = System.currentTimeMillis();
-        if (now - lastTime > 20 * 24 * 60 * 60 * 1000) {
-            String auth = AuthService.getAuth();
-            currentAuth = auth;
+        try{
+            long lastTime = Long.valueOf(BAIDU_LAST_UPDATE_TIME);
+            long now = System.currentTimeMillis();
+            if (now - lastTime > 20 * 24 * 60 * 60 * 1000) {
+                String auth = AuthService.getAuth();
+                currentAuth = auth;
+            }
+        } catch ( NumberFormatException e){
+
         }
+
     }
 
     public static void updateProperties() {
@@ -130,12 +140,13 @@ public class Config {
             propertiesOut.setProperty("qiniuyun-api-key", QINIUYUN_API_KEY);
             propertiesOut.setProperty("qiniuyun-secret-key", QINIUYUN_SECRET_KEY);
             propertiesOut.setProperty("qiniuyun-bucket", QINIUYUN_BUCKET);
+            propertiesOut.setProperty("qiniuyun-url-prefix", QINIUYUN_URL_PREFIX);
             propertiesOut.setProperty("local-dir-path", LOCAL_DIR_PATH);
             propertiesOut.setProperty("save-to-local-path", SAVE_TO_LOCAL_PATH);
             propertiesOut.setProperty("baidu-translate-api-secret", BAIDU_TRANSLATE_API_SECRET);
             propertiesOut.setProperty("baidu-translate-api-id", BAIDU_TRANSLATE_API_ID);
 
-            propertiesOut.store(fileOutputStream, new Date().toString());
+            propertiesOut.store(fileOutputStream,"第一次使用请将baidu-last-update-time设置为init。qiniuyun-url-prefix请设置为全路径，且后面加上/，如：http://q0l9qvfyx.bkt.clouddn.com/");
             fileOutputStream.flush();
             fileOutputStream.close();
         } catch (Exception e) {

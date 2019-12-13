@@ -64,6 +64,8 @@ public class BaiduService {
         } catch (TimeoutException e) {
             submit.cancel(true);
             e.printStackTrace();
+        } catch (IllegalStateException e){
+            JOptionPane.showMessageDialog(null, "打开剪切板失败，请重试", "错误", JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }
